@@ -1,0 +1,10 @@
+{
+    "example_int": 42,
+    "example_str": "Hello world!",
+    "example_double": 35.5,
+    "example_sub_class":{
+        "example_sub_str": "Hello from an object!"
+    },
+    "example_arr": ["Hello", "World"],
+    "example_mixed_arr": [42, "is", "the", "answer", "to", "everything"]
+}
