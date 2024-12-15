@@ -5,6 +5,7 @@ Using the JSON support from the Qt Framework, this library allows user to define
 1) Introduces the type awareness for the target JSON field. This allows the IDE to autocomplete the fields and their potential methods. Type awareness also prevents potential runtime errors that comes from mistyping or type safety related mistakes.
 2) The object checks for the missing fields from the json data (it can be disabled)
 3) Class interface reduces the verbosity while accessing the desired field
+Documentation can be seen with the following: ![Documentation](docs/html/index.html)
 
 
 
@@ -14,10 +15,10 @@ Using the JSON support from the Qt Framework, this library allows user to define
 
 Requirements for this library are as follows:
 1) QT Framework (Qt5 or later)
-2) C++11 or later
+2) C++17 or later
 \
 This library only uses the header files, so building the project isn't required. \
-Building the project executes the tests and runs the code example. 
+Building the project can still be done for the tests and code examples. 
     
 ## Usage/Examples
 
@@ -35,7 +36,7 @@ Let's say, a file named "example.json" contains the following json data:
     "example_mixed_arr": [42, "is", "the", "answer", "to", "everything"]
 }
 ```
-To parse this data, first we need to define our tagged JSON object class with the help of the "DEFINE_JSON_TAGGED_OBJECT" preprocessor macro. Each field of the defined class should match with the field names of the json data
+To parse this data, first we need to define our tagged JSON object class with the help of the "TJO_DEFINE_JSON_TAGGED_OBJECT" preprocessor macro. Each field of the defined class should match with the field names of the json data
 
 ```c++
 /* 
@@ -43,7 +44,7 @@ This is the definition for the inner object which will be used for defining the 
 Alternatively, the inner class can be defined as TaggedQJsonObject at the outer class but this
 prevents inner class members to be accessed directly, which defeats the purpose of this library.
 */
-DEFINE_JSON_TAGGED_OBJECT(InnerClass,
+TJO_DEFINE_JSON_TAGGED_OBJECT(InnerClass,
                          (TaggedJSONString, example_sub_str))
 
 /* 
@@ -52,7 +53,7 @@ Other parameters are the type-field pairs that defines the members of the define
 It should be noted that TaggedJSONObject class variants should be used for the field types instead of
 the regular types like int, double etc.
 */
-DEFINE_JSON_TAGGED_OBJECT(OuterClass,
+TJO_DEFINE_JSON_TAGGED_OBJECT(OuterClass,
                           (TaggedJSONInt, example_int),
                           (TaggedJSONString, example_str),
                           (TaggedJSONDouble, example_double),
