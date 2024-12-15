@@ -5,6 +5,15 @@
     "example_sub_class":{
         "example_sub_str": "Hello from an object!"
     },
+    "example_json_value1": {"test_value": 12},
+    "example_json_value2": [1, 2, 3],
+    "example_json_object": {"test_value": 12},
+
     "example_arr": ["Hello", "World"],
-    "example_mixed_arr": [42, "is", "the", "answer", "to", "everything"]
+    "example_mixed_arr": [42, "is", "the", "answer", "to", "everything"],
+    "example_tagged_object_array": [
+        {"name": "John", "age": 24},
+        {"name": "Michael", "age": 46},
+        {"name": "Sarah", "age": 5}
+    ]
 }

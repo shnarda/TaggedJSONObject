@@ -1,4 +1,5 @@
 #include "taggedjsonobject.h"
+#include "taggedjsonarray.h"
 #include "taggedjsonobjectmacros.h"
 
 /*
@@ -16,16 +17,17 @@ Let's say, example.json file contains the following:
 }
 */
 
-DEFINE_JSON_TAGGED_OBJECT(InnerClass,
+TJO_DEFINE_JSON_TAGGED_OBJECT(InnerClass,
                          (TaggedJSONString, example_sub_str))
 
-DEFINE_JSON_TAGGED_OBJECT(OuterClass,
+TJO_DEFINE_JSON_TAGGED_OBJECT(OuterClass,
                           (TaggedJSONInt, example_int),
                           (TaggedJSONString, example_str),
                           (TaggedJSONDouble, example_double),
                           (InnerClass, example_sub_class),
                           (TaggedJSONStringArray, example_arr),
                           (TaggedJSONVariantArray, example_mixed_arr))
+
 
 
 int main(int argc, char *argv[])
