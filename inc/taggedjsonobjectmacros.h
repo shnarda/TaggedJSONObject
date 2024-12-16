@@ -16,6 +16,12 @@
 #define TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE(type, name) name(val[#name], checkValues),
 #define TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE_UNPACK(pair) TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE pair
 
+#define TAGGEDOBJECTMACRO_LIST_MEMBERS(type, name) type name,
+#define TAGGEDOBJECTMACRO_LIST_MEMBERS_UNPACK(pair) TAGGEDOBJECTMACRO_LIST_MEMBERS pair
+
+#define TAGGEDOBJECTMACRO_MOVE_PARAMETERS(type, name) name(std::move(name)),
+#define TAGGEDOBJECTMACRO_MOVE_PARAMETERS_UNPACK(pair) TAGGEDOBJECTMACRO_MOVE_PARAMETERS pair
+
 
 namespace TaggedObject {
     inline QJsonObject getJSONObjectFromJSONText(const QByteArray& json)
@@ -47,6 +53,7 @@ public:\
     explicit CLASS_NAME(QJsonValue val, const bool checkValues=true) : MAP(TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE_UNPACK, __VA_ARGS__) dummyVar(false) {}; \
     explicit CLASS_NAME(const QByteArray& json, const bool checkValues=true) : CLASS_NAME(TaggedObject::getJSONObjectFromJSONText(json), checkValues) {};\
     explicit CLASS_NAME(const QString& filePath, const bool checkValues=true) : CLASS_NAME(TaggedObject::getJSONObjectFromFile(filePath), checkValues) {};\
+    explicit CLASS_NAME(MAP(TAGGEDOBJECTMACRO_LIST_MEMBERS_UNPACK, __VA_ARGS__) const bool checkValues=true) : MAP(TAGGEDOBJECTMACRO_MOVE_PARAMETERS_UNPACK, __VA_ARGS__) dummyVar(false) {};\
     MAP(TAGGEDOBJECTMACRO_DECLARE_MEMBER_UNPACK, __VA_ARGS__)\
 private:\
     bool dummyVar;\

@@ -33,6 +33,10 @@ public:
         dispatchValue(std::move(val));
     };
 
+    //! Implicit value constructor for the tagged object constructor
+    template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, T>>>
+    TaggedJSONObject(V&& val) { m_value = std::forward<V>(val); };
+
     /*!
      * \brief l-value reference getter for the contained object
      * \return The l-value reference of the contained object

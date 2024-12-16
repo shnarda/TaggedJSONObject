@@ -120,6 +120,14 @@ TEST(ConstructorTests, ConstructorFromQJsonObjectNonStrictTestPass)
     ASSERT_NO_THROW(MissingValuedClass(jsonObject, false));
 }
 
+// Tagged object can be constructed with values of its members
+TEST(ConstructorTests, ConstructorFromMemberInitialization)
+{
+    OuterClass testObj{ EXPECTED_INT_RESULT, EXPECTED_STRING_RESULT, EXPECTED_DOUBLE_RESULT, InnerClass{QJsonObject{}, false}, QJsonObject{}, QJsonValue{}, QJsonValue{}};
+
+    ASSERT_EQ(EXPECTED_INT_RESULT, *testObj.example_int);
+}
+
 
 // Asterisk operator can be used for obtaining the target data
 TEST_F(TaggedObjectFixture, IntegerGetFromAsterisk)

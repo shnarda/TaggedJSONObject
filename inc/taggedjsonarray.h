@@ -64,6 +64,10 @@ public:
             throw(std::runtime_error("Invalid data has been encountered while parsing the json data for TaggedJSONArray"));
     }
 
+    //! Implicit value constructor for the tagged object constructor
+    template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, QJsonArray>>>
+    TaggedJSONArray(V&& val) { m_arr = std::forward<V>(val); };
+
     //! Assignment operator setter
     template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, QJsonArray>>>
     void operator=(V&& val) { m_arr = std::forward<V>(val); };
@@ -227,6 +231,10 @@ public:
         if (checkValue && ref.isUndefined())
             throw(std::runtime_error("Invalid data has been encountered while parsing the json data for TaggedJSONArray"));
     }
+
+    //! Implicit value constructor for the tagged object constructor
+    template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, std::vector<T>>>>
+    TaggedJSONArray(V&& val) { m_arr = std::forward<V>(val); };
 
     //!Assignment operator to get the whole container data 
     template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, std::vector<T>>>>
