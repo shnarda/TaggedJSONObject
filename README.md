@@ -5,7 +5,7 @@ Using the JSON support from the Qt Framework, this library allows user to define
 1) Introduces the type awareness for the target JSON field. This allows the IDE to autocomplete the fields and their potential methods. Type awareness also prevents potential runtime errors that comes from mistyping or type safety related mistakes.
 2) The object checks for the missing fields from the json data (it can be disabled)
 3) Class interface reduces the verbosity while accessing the desired field
-Documentation can be seen with the following: ![Documentation](docs/html/index.html)
+Documentation can be accessed on docs/html/index.html
 
 
 
