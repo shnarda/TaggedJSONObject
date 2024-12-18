@@ -113,6 +113,10 @@ Later on, we can declare an instance by, either passing a QByteArray that stores
     qDebug() << text_everything;  //everything
 ```
 
+## Acknowledgements
+
+- [map-macro for the recursive macros](https://github.com/swansontec/map-macro)
+
 
 ## License
 
