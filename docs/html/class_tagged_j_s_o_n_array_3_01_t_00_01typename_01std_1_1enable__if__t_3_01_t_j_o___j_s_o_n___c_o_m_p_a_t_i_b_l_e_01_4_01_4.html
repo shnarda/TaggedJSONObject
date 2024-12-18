@@ -105,6 +105,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a72e61dd043833b6a93c104bb72a05848" id="r_a72e61dd043833b6a93c104bb72a05848"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72e61dd043833b6a93c104bb72a05848">TaggedJSONArray</a> (const QJsonValue &amp;ref, const bool checkValue=true)</td></tr>
 <tr class="memdesc:a72e61dd043833b6a93c104bb72a05848"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_tagged_j_s_o_n_array.html" title="Invalid TaggedJSONArray template for SFINAE.">TaggedJSONArray</a> constructor variant that takes QJsonValue input.  <br /></td></tr>
 <tr class="separator:a72e61dd043833b6a93c104bb72a05848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cb45ab60f7258f7bd0f7dce30d9a787" id="r_a4cb45ab60f7258f7bd0f7dce30d9a787"><td class="memTemplParams" colspan="2">template&lt;typename V , typename  = std::enable_if_t&lt;std::is_convertible_v&lt;V, QJsonArray&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a4cb45ab60f7258f7bd0f7dce30d9a787"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4cb45ab60f7258f7bd0f7dce30d9a787">TaggedJSONArray</a> (V &amp;&amp;val)</td></tr>
+<tr class="memdesc:a4cb45ab60f7258f7bd0f7dce30d9a787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implicit value constructor for the tagged object constructor.  <br /></td></tr>
+<tr class="separator:a4cb45ab60f7258f7bd0f7dce30d9a787"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2eba7a758dc15b151fee9f70cb8b12b9" id="r_a2eba7a758dc15b151fee9f70cb8b12b9"><td class="memTemplParams" colspan="2">template&lt;typename V , typename  = std::enable_if_t&lt;std::is_convertible_v&lt;V, QJsonArray&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a2eba7a758dc15b151fee9f70cb8b12b9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2eba7a758dc15b151fee9f70cb8b12b9">operator=</a> (V &amp;&amp;val)</td></tr>
 <tr class="memdesc:a2eba7a758dc15b151fee9f70cb8b12b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator setter.  <br /></td></tr>
@@ -158,7 +162,7 @@ Main usage for this class is to treat JSON data as class member for the tagged o
 <a class="el" href="class_tagged_j_s_o_n_array.html" title="Invalid TaggedJSONArray template for SFINAE.">TaggedJSONArray</a> can store all types of data JSON format accepts but <a class="el" href="class_tagged_j_s_o_n_array.html" title="Invalid TaggedJSONArray template for SFINAE.">TaggedJSONArray</a>&lt;T, typename std::enable_if_t&lt; std::is_constructible_v&lt;T, QJsonValue, bool&gt;&amp;&amp; std::is_constructible_v&lt;T, QString, bool&gt;&amp;&amp; std::is_constructible_v&lt;T, QByteArray, bool&gt;&amp;&amp; std::is_constructible_v &lt;T, QJsonObject, bool&gt;&gt;&gt; is more suitable for chaining JSON objects within JSON arrays. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a78e5c1d8aeefd45884efd1f7f3fd5e0d" name="a78e5c1d8aeefd45884efd1f7f3fd5e0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78e5c1d8aeefd45884efd1f7f3fd5e0d">&#9670;&#160;</a></span>TaggedJSONArray() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a78e5c1d8aeefd45884efd1f7f3fd5e0d">&#9670;&#160;</a></span>TaggedJSONArray() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -193,7 +197,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <a id="a72e61dd043833b6a93c104bb72a05848" name="a72e61dd043833b6a93c104bb72a05848"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72e61dd043833b6a93c104bb72a05848">&#9670;&#160;</a></span>TaggedJSONArray() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e61dd043833b6a93c104bb72a05848">&#9670;&#160;</a></span>TaggedJSONArray() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,6 +233,37 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a4cb45ab60f7258f7bd0f7dce30d9a787" name="a4cb45ab60f7258f7bd0f7dce30d9a787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cb45ab60f7258f7bd0f7dce30d9a787">&#9670;&#160;</a></span>TaggedJSONArray() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename V , typename  = std::enable_if_t&lt;std::is_convertible_v&lt;V, QJsonArray&gt;&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_tagged_j_s_o_n_array.html">TaggedJSONArray</a>&lt; T, typename std::enable_if_t&lt; <a class="el" href="taggedjsonarray_8h.html#ae65d5337ba37227e11264253f5abafc6">TJO_JSON_COMPATIBLE</a> &gt; &gt;<a class="el" href="class_tagged_j_s_o_n_array.html">::TaggedJSONArray</a> </td>
+          <td>(</td>
+          <td class="paramtype">V &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>val</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implicit value constructor for the tagged object constructor. </p>
 
 </div>
 </div>

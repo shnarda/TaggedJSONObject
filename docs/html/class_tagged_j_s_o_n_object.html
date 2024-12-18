@@ -102,6 +102,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a22cdc99184515f90e217175a0a7a8207" id="r_a22cdc99184515f90e217175a0a7a8207"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22cdc99184515f90e217175a0a7a8207">TaggedJSONObject</a> (QJsonValue val, const bool checkValue=true)</td></tr>
 <tr class="memdesc:a22cdc99184515f90e217175a0a7a8207"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_tagged_j_s_o_n_object.html" title="The TaggedJSONObject class stores the JSON data given by the tagged object.">TaggedJSONObject</a> Constructor that takes the JSON data and stores it according to the template argument.  <br /></td></tr>
 <tr class="separator:a22cdc99184515f90e217175a0a7a8207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8bad3bf290ed6a0270b0075a775db87" id="r_ab8bad3bf290ed6a0270b0075a775db87"><td class="memTemplParams" colspan="2">template&lt;typename V , typename  = std::enable_if_t&lt;std::is_convertible_v&lt;V, T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:ab8bad3bf290ed6a0270b0075a775db87"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab8bad3bf290ed6a0270b0075a775db87">TaggedJSONObject</a> (V &amp;&amp;val)</td></tr>
+<tr class="memdesc:ab8bad3bf290ed6a0270b0075a775db87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implicit value constructor for the tagged object constructor.  <br /></td></tr>
+<tr class="separator:ab8bad3bf290ed6a0270b0075a775db87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28994f0e5d5b600a55911d86bf56e836" id="r_a28994f0e5d5b600a55911d86bf56e836"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28994f0e5d5b600a55911d86bf56e836">get</a> ()</td></tr>
 <tr class="memdesc:a28994f0e5d5b600a55911d86bf56e836"><td class="mdescLeft">&#160;</td><td class="mdescRight">l-value reference getter for the contained object  <br /></td></tr>
 <tr class="separator:a28994f0e5d5b600a55911d86bf56e836"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,7 +165,7 @@ Main usage of this object is to treat JSON data as class member for the tagged o
 <a class="el" href="class_tagged_j_s_o_n_object.html" title="The TaggedJSONObject class stores the JSON data given by the tagged object.">TaggedJSONObject</a> can store all types of data JSON format accepts. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a22cdc99184515f90e217175a0a7a8207" name="a22cdc99184515f90e217175a0a7a8207"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22cdc99184515f90e217175a0a7a8207">&#9670;&#160;</a></span>TaggedJSONObject()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a22cdc99184515f90e217175a0a7a8207">&#9670;&#160;</a></span>TaggedJSONObject() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,6 +201,37 @@ template&lt;typename T , typename  = std::enable_if_t&lt;TJO_JSON_COMPATIBLE&gt;
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ab8bad3bf290ed6a0270b0075a775db87" name="ab8bad3bf290ed6a0270b0075a775db87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8bad3bf290ed6a0270b0075a775db87">&#9670;&#160;</a></span>TaggedJSONObject() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename  = std::enable_if_t&lt;TJO_JSON_COMPATIBLE&gt;&gt; </div>
+<div class="memtemplate">
+template&lt;typename V , typename  = std::enable_if_t&lt;std::is_convertible_v&lt;V, T&gt;&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_tagged_j_s_o_n_object.html">TaggedJSONObject</a>&lt; T, typename &gt;<a class="el" href="class_tagged_j_s_o_n_object.html">::TaggedJSONObject</a> </td>
+          <td>(</td>
+          <td class="paramtype">V &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>val</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implicit value constructor for the tagged object constructor. </p>
 
 </div>
 </div>

@@ -122,6 +122,14 @@ Macros</h2></td></tr>
 <tr class="separator:a22b644eea40f903cea4eec35f7a4cd9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a667f62ccaae32bced27b8c72ce01950b" id="r_a667f62ccaae32bced27b8c72ce01950b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a667f62ccaae32bced27b8c72ce01950b">TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE_UNPACK</a>(pair)</td></tr>
 <tr class="separator:a667f62ccaae32bced27b8c72ce01950b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa44cf414274649db1113b8b556c2e795" id="r_aa44cf414274649db1113b8b556c2e795"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa44cf414274649db1113b8b556c2e795">TAGGEDOBJECTMACRO_LIST_MEMBERS</a>(type,  name)</td></tr>
+<tr class="separator:aa44cf414274649db1113b8b556c2e795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5f4072337c4eb25442ce3329b7267d2" id="r_af5f4072337c4eb25442ce3329b7267d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5f4072337c4eb25442ce3329b7267d2">TAGGEDOBJECTMACRO_LIST_MEMBERS_UNPACK</a>(pair)</td></tr>
+<tr class="separator:af5f4072337c4eb25442ce3329b7267d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae067cadfd3acaae017dd6669f99e24e7" id="r_ae067cadfd3acaae017dd6669f99e24e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae067cadfd3acaae017dd6669f99e24e7">TAGGEDOBJECTMACRO_MOVE_PARAMETERS</a>(type,  name)</td></tr>
+<tr class="separator:ae067cadfd3acaae017dd6669f99e24e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe582aa50676acb7394ab3ea875f85c4" id="r_afe582aa50676acb7394ab3ea875f85c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe582aa50676acb7394ab3ea875f85c4">TAGGEDOBJECTMACRO_MOVE_PARAMETERS_UNPACK</a>(pair)</td></tr>
+<tr class="separator:afe582aa50676acb7394ab3ea875f85c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08d8e60f158feaf54caefec7348efc14" id="r_a08d8e60f158feaf54caefec7348efc14"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08d8e60f158feaf54caefec7348efc14">TJO_DEFINE_JSON_TAGGED_OBJECT</a>(CLASS_NAME, ...)</td></tr>
 <tr class="memdesc:a08d8e60f158feaf54caefec7348efc14"><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro builds a specialized class that is used for encapsulating JSON objects, which in this documentation as tagged object.  <br /></td></tr>
 <tr class="separator:a08d8e60f158feaf54caefec7348efc14"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,7 +201,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">name(val.take(#name), checkValues),</div>
+<b>Value:</b><div class="fragment"><div class="line">name(val.take(#name), checkValues)</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -234,7 +242,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">name(val[#name], checkValues),</div>
+<b>Value:</b><div class="fragment"><div class="line">name(val[#name], checkValues)</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -254,6 +262,88 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a22b644eea40f903cea4eec35f7a4cd9f">TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE</a> pair</div>
 <div class="ttc" id="ataggedjsonobjectmacros_8h_html_a22b644eea40f903cea4eec35f7a4cd9f"><div class="ttname"><a href="#a22b644eea40f903cea4eec35f7a4cd9f">TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE</a></div><div class="ttdeci">#define TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE(type, name)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:16</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa44cf414274649db1113b8b556c2e795" name="aa44cf414274649db1113b8b556c2e795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa44cf414274649db1113b8b556c2e795">&#9670;&#160;</a></span>TAGGEDOBJECTMACRO_LIST_MEMBERS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAGGEDOBJECTMACRO_LIST_MEMBERS</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">type name</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af5f4072337c4eb25442ce3329b7267d2" name="af5f4072337c4eb25442ce3329b7267d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5f4072337c4eb25442ce3329b7267d2">&#9670;&#160;</a></span>TAGGEDOBJECTMACRO_LIST_MEMBERS_UNPACK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAGGEDOBJECTMACRO_LIST_MEMBERS_UNPACK</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>pair</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#aa44cf414274649db1113b8b556c2e795">TAGGEDOBJECTMACRO_LIST_MEMBERS</a> pair</div>
+<div class="ttc" id="ataggedjsonobjectmacros_8h_html_aa44cf414274649db1113b8b556c2e795"><div class="ttname"><a href="#aa44cf414274649db1113b8b556c2e795">TAGGEDOBJECTMACRO_LIST_MEMBERS</a></div><div class="ttdeci">#define TAGGEDOBJECTMACRO_LIST_MEMBERS(type, name)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:19</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae067cadfd3acaae017dd6669f99e24e7" name="ae067cadfd3acaae017dd6669f99e24e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae067cadfd3acaae017dd6669f99e24e7">&#9670;&#160;</a></span>TAGGEDOBJECTMACRO_MOVE_PARAMETERS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAGGEDOBJECTMACRO_MOVE_PARAMETERS</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">name(std::move(name))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afe582aa50676acb7394ab3ea875f85c4" name="afe582aa50676acb7394ab3ea875f85c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe582aa50676acb7394ab3ea875f85c4">&#9670;&#160;</a></span>TAGGEDOBJECTMACRO_MOVE_PARAMETERS_UNPACK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAGGEDOBJECTMACRO_MOVE_PARAMETERS_UNPACK</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>pair</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ae067cadfd3acaae017dd6669f99e24e7">TAGGEDOBJECTMACRO_MOVE_PARAMETERS</a> pair</div>
+<div class="ttc" id="ataggedjsonobjectmacros_8h_html_ae067cadfd3acaae017dd6669f99e24e7"><div class="ttname"><a href="#ae067cadfd3acaae017dd6669f99e24e7">TAGGEDOBJECTMACRO_MOVE_PARAMETERS</a></div><div class="ttdeci">#define TAGGEDOBJECTMACRO_MOVE_PARAMETERS(type, name)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:22</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -277,21 +367,22 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">class </span>CLASS_NAME{\</div>
 <div class="line"><span class="keyword">public</span>:\</div>
-<div class="line">    <span class="keyword">explicit</span> CLASS_NAME(QJsonObject val, <span class="keyword">const</span> <span class="keywordtype">bool</span> checkValues=<span class="keyword">true</span>) : <a class="code hl_define" href="map_8h.html#ab737f5c10b510e43a4b84ffa421c409a">MAP</a>(<a class="code hl_define" href="#a8b5ccd1e8c837ac08ba6dd4075e6fec2">TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_UNPACK</a>, __VA_ARGS__) dummyVar(false) {}; \</div>
-<div class="line">    <span class="keyword">explicit</span> CLASS_NAME(QJsonValue val, <span class="keyword">const</span> <span class="keywordtype">bool</span> checkValues=<span class="keyword">true</span>) : <a class="code hl_define" href="map_8h.html#ab737f5c10b510e43a4b84ffa421c409a">MAP</a>(<a class="code hl_define" href="#a667f62ccaae32bced27b8c72ce01950b">TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE_UNPACK</a>, __VA_ARGS__) dummyVar(false) {}; \</div>
+<div class="line">    <span class="keyword">explicit</span> CLASS_NAME(QJsonObject val, <span class="keyword">const</span> <span class="keywordtype">bool</span> checkValues=<span class="keyword">true</span>) : <a class="code hl_define" href="map_8h.html#aadfded500bd0e541ba7d34da0111f28a">MAP_LIST</a>(<a class="code hl_define" href="#a8b5ccd1e8c837ac08ba6dd4075e6fec2">TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_UNPACK</a>, __VA_ARGS__) {}; \</div>
+<div class="line">    <span class="keyword">explicit</span> CLASS_NAME(QJsonValue val, <span class="keyword">const</span> <span class="keywordtype">bool</span> checkValues=<span class="keyword">true</span>) : <a class="code hl_define" href="map_8h.html#aadfded500bd0e541ba7d34da0111f28a">MAP_LIST</a>(<a class="code hl_define" href="#a667f62ccaae32bced27b8c72ce01950b">TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE_UNPACK</a>, __VA_ARGS__) {}; \</div>
 <div class="line">    <span class="keyword">explicit</span> CLASS_NAME(<span class="keyword">const</span> QByteArray&amp; json, <span class="keyword">const</span> <span class="keywordtype">bool</span> checkValues=<span class="keyword">true</span>) : CLASS_NAME(<a class="code hl_namespace" href="namespace_tagged_object.html">TaggedObject</a>::<a class="code hl_function" href="namespace_tagged_object.html#adab8b640c7b5678f8f979d111e0ffaad">getJSONObjectFromJSONText</a>(json), checkValues) {};\</div>
 <div class="line">    <span class="keyword">explicit</span> CLASS_NAME(<span class="keyword">const</span> QString&amp; filePath, <span class="keyword">const</span> <span class="keywordtype">bool</span> checkValues=<span class="keyword">true</span>) : CLASS_NAME(<a class="code hl_namespace" href="namespace_tagged_object.html">TaggedObject</a>::<a class="code hl_function" href="namespace_tagged_object.html#afb088f082a6a1f14d0853831c2cfb726">getJSONObjectFromFile</a>(filePath), checkValues) {};\</div>
+<div class="line">    <span class="keyword">explicit</span> CLASS_NAME(<a class="code hl_define" href="map_8h.html#aadfded500bd0e541ba7d34da0111f28a">MAP_LIST</a>(<a class="code hl_define" href="#af5f4072337c4eb25442ce3329b7267d2">TAGGEDOBJECTMACRO_LIST_MEMBERS_UNPACK</a>, __VA_ARGS__), <span class="keyword">const</span> <span class="keywordtype">bool</span> checkValues=<span class="keyword">true</span>) : <a class="code hl_define" href="map_8h.html#aadfded500bd0e541ba7d34da0111f28a">MAP_LIST</a>(<a class="code hl_define" href="#afe582aa50676acb7394ab3ea875f85c4">TAGGEDOBJECTMACRO_MOVE_PARAMETERS_UNPACK</a>, __VA_ARGS__) {};\</div>
 <div class="line">    MAP(<a class="code hl_define" href="#a47d4dee16a6be22bcc1dc565ca2c455f">TAGGEDOBJECTMACRO_DECLARE_MEMBER_UNPACK</a>, __VA_ARGS__)\</div>
-<div class="line"><span class="keyword">private</span>:\</div>
-<div class="line">    <span class="keywordtype">bool</span> dummyVar;\</div>
 <div class="line">};</div>
-<div class="ttc" id="amap_8h_html_ab737f5c10b510e43a4b84ffa421c409a"><div class="ttname"><a href="map_8h.html#ab737f5c10b510e43a4b84ffa421c409a">MAP</a></div><div class="ttdeci">#define MAP(f,...)</div><div class="ttdef"><b>Definition</b> map.h:46</div></div>
-<div class="ttc" id="anamespace_tagged_object_html"><div class="ttname"><a href="namespace_tagged_object.html">TaggedObject</a></div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:20</div></div>
-<div class="ttc" id="anamespace_tagged_object_html_adab8b640c7b5678f8f979d111e0ffaad"><div class="ttname"><a href="namespace_tagged_object.html#adab8b640c7b5678f8f979d111e0ffaad">TaggedObject::getJSONObjectFromJSONText</a></div><div class="ttdeci">QJsonObject getJSONObjectFromJSONText(const QByteArray &amp;json)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:21</div></div>
-<div class="ttc" id="anamespace_tagged_object_html_afb088f082a6a1f14d0853831c2cfb726"><div class="ttname"><a href="namespace_tagged_object.html#afb088f082a6a1f14d0853831c2cfb726">TaggedObject::getJSONObjectFromFile</a></div><div class="ttdeci">QJsonObject getJSONObjectFromFile(const QString &amp;filePath)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:25</div></div>
+<div class="ttc" id="amap_8h_html_aadfded500bd0e541ba7d34da0111f28a"><div class="ttname"><a href="map_8h.html#aadfded500bd0e541ba7d34da0111f28a">MAP_LIST</a></div><div class="ttdeci">#define MAP_LIST(f,...)</div><div class="ttdef"><b>Definition</b> map.h:52</div></div>
+<div class="ttc" id="anamespace_tagged_object_html"><div class="ttname"><a href="namespace_tagged_object.html">TaggedObject</a></div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:26</div></div>
+<div class="ttc" id="anamespace_tagged_object_html_adab8b640c7b5678f8f979d111e0ffaad"><div class="ttname"><a href="namespace_tagged_object.html#adab8b640c7b5678f8f979d111e0ffaad">TaggedObject::getJSONObjectFromJSONText</a></div><div class="ttdeci">QJsonObject getJSONObjectFromJSONText(const QByteArray &amp;json)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:27</div></div>
+<div class="ttc" id="anamespace_tagged_object_html_afb088f082a6a1f14d0853831c2cfb726"><div class="ttname"><a href="namespace_tagged_object.html#afb088f082a6a1f14d0853831c2cfb726">TaggedObject::getJSONObjectFromFile</a></div><div class="ttdeci">QJsonObject getJSONObjectFromFile(const QString &amp;filePath)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:31</div></div>
 <div class="ttc" id="ataggedjsonobjectmacros_8h_html_a47d4dee16a6be22bcc1dc565ca2c455f"><div class="ttname"><a href="#a47d4dee16a6be22bcc1dc565ca2c455f">TAGGEDOBJECTMACRO_DECLARE_MEMBER_UNPACK</a></div><div class="ttdeci">#define TAGGEDOBJECTMACRO_DECLARE_MEMBER_UNPACK(pair)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:11</div></div>
 <div class="ttc" id="ataggedjsonobjectmacros_8h_html_a667f62ccaae32bced27b8c72ce01950b"><div class="ttname"><a href="#a667f62ccaae32bced27b8c72ce01950b">TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE_UNPACK</a></div><div class="ttdeci">#define TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE_UNPACK(pair)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:17</div></div>
 <div class="ttc" id="ataggedjsonobjectmacros_8h_html_a8b5ccd1e8c837ac08ba6dd4075e6fec2"><div class="ttname"><a href="#a8b5ccd1e8c837ac08ba6dd4075e6fec2">TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_UNPACK</a></div><div class="ttdeci">#define TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_UNPACK(pair)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:14</div></div>
+<div class="ttc" id="ataggedjsonobjectmacros_8h_html_af5f4072337c4eb25442ce3329b7267d2"><div class="ttname"><a href="#af5f4072337c4eb25442ce3329b7267d2">TAGGEDOBJECTMACRO_LIST_MEMBERS_UNPACK</a></div><div class="ttdeci">#define TAGGEDOBJECTMACRO_LIST_MEMBERS_UNPACK(pair)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:20</div></div>
+<div class="ttc" id="ataggedjsonobjectmacros_8h_html_afe582aa50676acb7394ab3ea875f85c4"><div class="ttname"><a href="#afe582aa50676acb7394ab3ea875f85c4">TAGGEDOBJECTMACRO_MOVE_PARAMETERS_UNPACK</a></div><div class="ttdeci">#define TAGGEDOBJECTMACRO_MOVE_PARAMETERS_UNPACK(pair)</div><div class="ttdef"><b>Definition</b> taggedjsonobjectmacros.h:23</div></div>
 </div><!-- fragment -->
 <p>This macro builds a specialized class that is used for encapsulating JSON objects, which in this documentation as tagged object. </p>
 <p>Name of the class to be defined is set by the argument <em>CLASS_NAME</em> and the members of the class are defined by adding:<br  />
