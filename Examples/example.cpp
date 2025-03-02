@@ -64,5 +64,14 @@ int main(int argc, char *argv[])
     qDebug() << answer_to_everything;
     qDebug() << text_everything;
 
+    //For reverse application, tagged objects can be filled manually, then can be  converted to QJsonObjects
+    OuterClass secondObject{};
+    secondObject.example_int = 12;
+    secondObject.example_sub_class = InnerClass{TaggedJSONString{"12"}, true};
+    secondObject.example_arr = TaggedJSONStringArray{{"Manual", "Placement"}};
+    const QJsonObject jsonObj = secondObject.toJsonObject();
+
+    qDebug() << QJsonDocument(jsonObj).toJson();
+
     return 0;
 }
