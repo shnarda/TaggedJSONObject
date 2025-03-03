@@ -70,7 +70,7 @@ TEST_F(TaggedArrayFixture, ArraySetFromBrackets)
 TEST_F(TaggedArrayFixture, ArrayArrowOperator)
 {
     auto lambda_customSum = [](QString previous, QJsonValue current) -> QString {return previous + current.toString(); };
-    const QString concatText = std::reduce(testObj.example_arr->begin(), testObj.example_arr->end(), QString(), lambda_customSum);
+    const QString concatText = std::accumulate(testObj.example_arr->begin(), testObj.example_arr->end(), QString(), lambda_customSum);
     ASSERT_EQ(std::string(EXPECTED_REDUCED_RESULT), concatText.toStdString());
 }
 
@@ -106,7 +106,7 @@ TEST_F(TaggedArrayFixture, TaggedObjectContainer)
 TEST_F(TaggedArrayFixture, TaggedObjectContainerVectorOperations)
 {
     const auto lambda_accumulateAges = [](const int previous, const Identity& curIdentity) -> int {return previous + *curIdentity.age; };
-    const int totalAge = std::reduce(testObj.example_tagged_object_array->cbegin(), testObj.example_tagged_object_array->cend(), 0, lambda_accumulateAges);
+    const int totalAge = std::accumulate(testObj.example_tagged_object_array->cbegin(), testObj.example_tagged_object_array->cend(), 0, lambda_accumulateAges);
 
     ASSERT_EQ(EXPECTED_TOTAL_AGE, totalAge);
 }
@@ -124,3 +124,23 @@ TEST_F(TaggedArrayFixture, TaggedObjectContainerMutation)
     testObj.example_tagged_object_array[0] = Identity{ newObj };
     ASSERT_EQ(MODIFIED_AGE, *testObj.example_tagged_object_array.at(0).age);
 }
+
+//QJsonObject conversions can be done on TaggedJSONArray's as well
+TEST_F(TaggedArrayFixture, TaggedStringArraytoQJsonObject)
+{
+    const QJsonObject obj = testObj.toJsonObject();
+    const QJsonArray arr = obj["example_arr"].toArray();
+    ASSERT_EQ(EXPECTED_ARRAY_FIRST_ELEMENT_RESULT, arr[0].toString());
+}
+
+//Array of TaggedObjects inside a taggedObject can be converted to QJsonObject
+TEST_F(TaggedArrayFixture, TaggedObjectArraytoQJsonObject)
+{
+    const QJsonObject obj = testObj.toJsonObject();
+    const QJsonArray arr = obj["example_tagged_object_array"].toArray();
+
+    const auto lambda_accumulateAges = [](const int previous, const QJsonValue& curIdentity) -> int {return previous + curIdentity["age"].toInt(); };
+    const int totalAge = std::accumulate(arr.cbegin(), arr.cend(), 0, lambda_accumulateAges);
+    ASSERT_EQ(EXPECTED_TOTAL_AGE, totalAge);
+}
+

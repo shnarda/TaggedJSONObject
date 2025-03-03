@@ -291,3 +291,30 @@ TEST_F(TaggedObjectFixture, SubclassSetFromAssignment)
     testObj.example_sub_class.example_sub_str = MODIFIED_VALUE;
     ASSERT_EQ(MODIFIED_VALUE, testObj.example_sub_class.example_sub_str);
 }
+
+// A QJsonObject that holds all the data the TaggedObject can be obtained with the toJsonObject method
+TEST_F(TaggedObjectFixture, ToJsonObjectInt)
+{
+    const QJsonObject obj = testObj.toJsonObject();
+    ASSERT_EQ(EXPECTED_INT_RESULT, obj["example_int"].toInt());
+}
+TEST_F(TaggedObjectFixture, ToJsonObjectString)
+{
+    const QJsonObject obj = testObj.toJsonObject();
+    ASSERT_EQ(EXPECTED_STRING_RESULT, obj["example_str"].toString().toUtf8());
+}
+TEST_F(TaggedObjectFixture, ToJsonObjectDouble)
+{
+    const QJsonObject obj = testObj.toJsonObject();
+    ASSERT_DOUBLE_EQ(EXPECTED_DOUBLE_RESULT, obj["example_double"].toDouble());
+}
+TEST_F(TaggedObjectFixture, ToJsonObjectSubClass)
+{
+    const QJsonObject obj = testObj.toJsonObject();
+    ASSERT_EQ(EXPECTED_SUBSTRING_RESULT, obj["example_sub_class"]["example_sub_str"].toString().toUtf8());
+}
+TEST_F(TaggedObjectFixture, ToJsonObjectQJsonValue)
+{
+    const QJsonObject obj = testObj.toJsonObject();
+    ASSERT_DOUBLE_EQ(EXPECTED_JSON_VALUE_RESULT, obj["example_json_value1"]["test_value"].toInt());
+}
