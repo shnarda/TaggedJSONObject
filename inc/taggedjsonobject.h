@@ -19,23 +19,20 @@ template <typename T, typename=std::enable_if_t<TJO_JSON_COMPATIBLE>>
 class TaggedJSONObject
 {
 public:
+    //! Default constructor, which is useful if the parameters planned to be filled later
+    explicit TaggedJSONObject() : m_value() {}
+
     /*!
      * \brief TaggedJSONObject Constructor that takes the JSON data and stores it according to the template argument.
      * \param val Target JSON value to be stored.
      * \param checkValue If set to true, invalid conversions (missing value, wrong type etc.) will throw a runtime error.
      */
-    explicit TaggedJSONObject(QJsonValue val, const bool checkValue=true)
-    {
-        //Check if there is a valid data if it's intended
-        if(checkValue && val.isUndefined())
-            throw(std::runtime_error("Invalid data has been encountered while parsing the json data for TaggedJSONObject"));
-
-        dispatchValue(std::move(val));
-    };
+    explicit TaggedJSONObject(const QJsonValue& val, const bool checkValue=true) : m_value(dispatchValue(val, checkValue))
+    {};
 
     //! Implicit value constructor for the tagged object constructor
     template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, T>>>
-    TaggedJSONObject(V&& val) { m_value = std::forward<V>(val); };
+    TaggedJSONObject(V&& val) : m_value(std::forward<V>(val)) {};
 
     /*!
      * \brief l-value reference getter for the contained object
@@ -86,7 +83,7 @@ public:
      * \brief operator -> Shortcut for object values (QString, QVariant etc.) methods.
      * \return The contained object
      */
-    const T* const operator->() const {return &m_value;};
+    const T* operator->() const {return &m_value;};
 
     //! Shortcut for value operations (for QJsonValue and QJsonObjects only)
     template<typename S=T, typename=std::enable_if_t<std::is_same_v<S, QJsonValue> || std::is_same_v<S, QJsonObject>>>
@@ -106,6 +103,8 @@ public:
             return QString(m_value);
     };
 
+    QJsonValue toJsonValue() const {return QJsonValue{m_value};}
+
 private:
     T m_value;
 
@@ -113,21 +112,25 @@ private:
     friend std::ostream& operator<< (std::ostream& stream, const TaggedJSONObject<TO>& obj);
 
     //Determine the function to be called at compile time based on the current template parameter
-    void dispatchValue(QJsonValue&& val){
+    T dispatchValue(const QJsonValue& val, const bool checkValue){
+        //Check if there is a valid data if it's intended
+        if(checkValue && val.isUndefined())
+            throw(std::runtime_error("Invalid data has been encountered while parsing the json data for TaggedJSONObject"));
+
         if constexpr(std::is_same_v<T, bool>)
-            m_value = val.toBool();
+            return val.toBool();
         else if constexpr(std::is_integral_v<T>)
-            m_value = val.toInt();
+            return val.toInt();
         else if constexpr(std::is_floating_point_v<T>)
-            m_value = val.toDouble();
+            return val.toDouble();
         else if constexpr(std::is_same_v<T, QJsonValue>)
-            m_value = std::move(val);
+            return val;
         else if constexpr(std::is_same_v<T, QJsonObject>)
-            m_value = val.toObject();
+            return val.toObject();
         else if constexpr(std::is_same_v<T, QString>)
-            m_value = val.toString();
+            return val.toString();
         else if constexpr(std::is_same_v<T, QVariant>)
-            m_value = val.toVariant();
+            return val.toVariant();
         else
             throw(std::invalid_argument("Template argument for the TaggedJSONObject is not valid"));
     }

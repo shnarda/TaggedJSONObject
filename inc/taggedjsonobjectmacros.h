@@ -7,10 +7,13 @@
 #include <QJsonObject>
 #include <QByteArray>
 
+#define TAGGEDOBJECTMACRO_PREPARE_JSON_OBJECT(type, name) ret[#name] = name.toJsonValue();
+#define TAGGEDOBJECTMACRO_PREPARE_JSON_OBJECT_UNPACK(pair) TAGGEDOBJECTMACRO_PREPARE_JSON_OBJECT pair
+
 #define TAGGEDOBJECTMACRO_DECLARE_MEMBER(type, name) type name;
 #define TAGGEDOBJECTMACRO_DECLARE_MEMBER_UNPACK(pair) TAGGEDOBJECTMACRO_DECLARE_MEMBER pair
 
-#define TAGGEDOBJECTMACRO_INITIALIZE_MEMBER(type, name) name(val.take(#name), checkValues)
+#define TAGGEDOBJECTMACRO_INITIALIZE_MEMBER(type, name) name(obj[#name], checkValues)
 #define TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_UNPACK(pair) TAGGEDOBJECTMACRO_INITIALIZE_MEMBER pair
 
 #define TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE(type, name) name(val[#name], checkValues)
@@ -49,11 +52,19 @@ respective JSON data, a runtime error will be raised.
 #define TJO_DEFINE_JSON_TAGGED_OBJECT(CLASS_NAME, ...) \
 class CLASS_NAME{\
 public:\
-    explicit CLASS_NAME(QJsonObject val, const bool checkValues=true) : MAP_LIST(TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_UNPACK, __VA_ARGS__) {}; \
-    explicit CLASS_NAME(QJsonValue val, const bool checkValues=true) : MAP_LIST(TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE_UNPACK, __VA_ARGS__) {}; \
+    explicit CLASS_NAME() {}\
+    explicit CLASS_NAME(const QJsonObject& obj, const bool checkValues=true) : MAP_LIST(TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_UNPACK, __VA_ARGS__) {}; \
+    explicit CLASS_NAME(const QJsonValue& val, const bool checkValues=true) : MAP_LIST(TAGGEDOBJECTMACRO_INITIALIZE_MEMBER_VALUE_UNPACK, __VA_ARGS__) {}; \
     explicit CLASS_NAME(const QByteArray& json, const bool checkValues=true) : CLASS_NAME(TaggedObject::getJSONObjectFromJSONText(json), checkValues) {};\
     explicit CLASS_NAME(const QString& filePath, const bool checkValues=true) : CLASS_NAME(TaggedObject::getJSONObjectFromFile(filePath), checkValues) {};\
     explicit CLASS_NAME(MAP_LIST(TAGGEDOBJECTMACRO_LIST_MEMBERS_UNPACK, __VA_ARGS__), const bool checkValues=true) : MAP_LIST(TAGGEDOBJECTMACRO_MOVE_PARAMETERS_UNPACK, __VA_ARGS__) {};\
+    QJsonObject toJsonObject() const\
+    {\
+        QJsonObject ret;\
+        MAP(TAGGEDOBJECTMACRO_PREPARE_JSON_OBJECT_UNPACK, __VA_ARGS__)\
+        return ret;\
+    }\
+    QJsonValue toJsonValue() const { return toJsonObject(); }\
     MAP(TAGGEDOBJECTMACRO_DECLARE_MEMBER_UNPACK, __VA_ARGS__)\
 };
 

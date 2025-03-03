@@ -16,7 +16,7 @@
 
 namespace {
     template<typename T>
-    std::vector<T> extractFromQJSONArray(QJsonArray arr, const bool checkValue)
+    std::vector<T> extractFromQJSONArray(const QJsonArray& arr, const bool checkValue)
     {
         std::vector<T> out;
         out.reserve(arr.size());
@@ -45,6 +45,9 @@ template<typename T>
 class TaggedJSONArray <T, typename std::enable_if_t<TJO_JSON_COMPATIBLE>>
 {
 public:
+    //! Default constructor, which is useful if the parameters planned to be filled later
+    explicit TaggedJSONArray() {}
+
     /*!
     * \brief TaggedJSONArray constructor variant that takes QJsonArray input directly
     * \param val target JSON array data
@@ -66,11 +69,11 @@ public:
 
     //! Implicit value constructor for the tagged object constructor
     template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, QJsonArray>>>
-    TaggedJSONArray(V&& val) { m_arr = std::forward<V>(val); };
+    TaggedJSONArray(V&& val) : m_arr(std::forward<V>(val)) {};
 
     //! Assignment operator setter
     template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, QJsonArray>>>
-    void operator=(V&& val) { m_arr = std::forward<V>(val); };
+    TaggedJSONArray& operator=(V&& val) { m_arr = std::forward<V>(val); };
 
     //Operator overloads
     bool operator!=(const QJsonArray& other) const { return m_arr != other; };
@@ -161,6 +164,8 @@ public:
         return ret;
     }
 
+    QJsonValue toJsonValue() const {return m_arr;}
+
 private:
     QJsonArray m_arr;
 
@@ -220,6 +225,9 @@ template<typename T>
 class TaggedJSONArray<T, typename std::enable_if_t<TJO_IS_TAGGED_OBJECT>>
 {
 public:
+    //! Default constructor, which is useful if the parameters planned to be filled later
+    explicit TaggedJSONArray() : m_arr() {}
+
     /*!
      * @brief Main constructor that is intended to be used with the #TJO_DEFINE_JSON_TAGGED_OBJECT() macro.
      * @param ref QJsonValue that holds the array of predefined JSON objects.
@@ -234,11 +242,11 @@ public:
 
     //! Implicit value constructor for the tagged object constructor
     template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, std::vector<T>>>>
-    TaggedJSONArray(V&& val) { m_arr = std::forward<V>(val); };
+    TaggedJSONArray(V&& val) : m_arr(std::forward<V>(val)) {};
 
     //!Assignment operator to get the whole container data 
     template<typename V, typename = std::enable_if_t<std::is_convertible_v<V, std::vector<T>>>>
-    void operator=(V&& val) { m_arr = std::forward<V>(val); };
+    TaggedJSONArray& operator=(V&& val) { m_arr = std::forward<V>(val); };
 
     bool operator!=(const std::vector<T>& other) const { return m_arr != other; };
     bool operator==(const std::vector<T>& other) const { return m_arr == other; };
@@ -271,7 +279,17 @@ public:
     };
 
     //!QVector access
-    QVector<T> toQVector() const { return QVector::fromStdVector(m_arr); }
+    QVector<T> toQVector() const { return QVector<T>::fromStdVector(m_arr); }
+
+    //!Converts the holding values back to a QJsonArray that holds each TaggedObject information
+    QJsonValue toJsonValue() const
+    {
+        QJsonArray ret;
+        for(const T& curObj : m_arr){
+            ret.append(curObj.toJsonValue());
+        }
+        return ret;
+    }
 
 private:
     std::vector<T> m_arr;
